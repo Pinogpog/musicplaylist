@@ -38,6 +38,11 @@ const playerVolumeSlider = document.getElementById('playerVolumeSlider');
 const playerSpeedSlider = document.getElementById('playerSpeedSlider'); // Add this
 const currentSpeedDisplay = document.getElementById('currentSpeedDisplay'); // Add this
 
+function getSafeMediaUrl(path) {
+    if (!path) return '';
+    return encodeURI(path);
+}
+
 // App State
 let songs = [
     {
@@ -516,7 +521,7 @@ function showPlayerPage() {
 
     const currentSong = songs[currentSongIndex];
     if (currentSong && currentSong.videoBgSrc) {
-        backgroundVideo.src = currentSong.videoBgSrc;
+        backgroundVideo.src = getSafeMediaUrl(currentSong.videoBgSrc);
         backgroundVideo.load();
         backgroundVideo.play().catch(e => console.error("Error playing video background:", e));
     } else {
@@ -555,7 +560,7 @@ function renderSongList() {
         listItem.addEventListener('mouseenter', () => {
             // Only enable background video if we are on the home page
             if (homePage.classList.contains('active') && song.videoBgSrc) {
-                backgroundVideo.src = song.videoBgSrc;
+                backgroundVideo.src = getSafeMediaUrl(song.videoBgSrc);
                 backgroundVideo.load();
                 backgroundVideoContainer.classList.add('active');
                 backgroundVideo.play().catch(e => console.error("Error playing video on hover:", e));
@@ -597,7 +602,7 @@ function loadSong(song) {
     
     renderLyrics(song.lyrics); // Call the render Lyrics function
     
-    audioPlayer.src = song.audioSrc;
+    audioPlayer.src = getSafeMediaUrl(song.audioSrc);
 
     audioPlayer.onloadedmetadata = () => {
         playerTotalDuration.textContent = formatTime(audioPlayer.duration);
