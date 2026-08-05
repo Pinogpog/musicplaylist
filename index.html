@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEVJAMMY - Music Player</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="video-background-container">
+        <video id="backgroundVideo" autoplay loop muted playsinline></video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <div id="homePage" class="page active">
+        <header class="home-header">
+            <span class="eyebrow">DEVJAMMY • Curated Sound</span>
+            <h1>Music Playlist</h1>
+            <p class="header-subtitle">A stylish, immersive playlist experience with dreamy visuals, smooth playback, and a touch of personal storytelling.</p>
+        </header>
+        <main>
+            <section class="feature-panel">
+                <p>Explore your favorite tracks, enjoy the animated background, and step into a more cinematic listening vibe.</p>
+            </section>
+            <ul id="songList" class="song-list">
+                <li class="loading-songs">Loading songs...</li> 
+            </ul>
+        </main>
+
+        <section class="creator-section" aria-label="About the creator">
+            <div class="creator-card">
+                <span class="creator-badge">About the Creator</span>
+                <h3>DEVJAMMY</h3>
+                <p>
+                    I'm a Grade 12 student at Information and Communication Technology (ICT) student at Filamer Christian University. I live in Dumalag, Capiz, where I have grown up learning the value of hard work, respect, and perseverance. As an ICT student, I enjoy learning about computers, technology, and digital skills that can help me prepare for my future career. I'm always willing to learn new things, improve my abilities, and take on challenges that help me grow both academically and personally.
+                </p>
+
+                <div class="creator-links">
+                    <p class="creator-social-label">MY SOCIAL MEDIA</p>
+                    <a class="creator-social-btn" href="https://www.facebook.com/cheng.coc.5" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </a>
+                    <a class="creator-social-btn" href="https://github.com/Pinogpog" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a class="creator-social-btn" href="https://www.tiktok.com/@devjammycodmtt" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-tiktok"></i> TikTok
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="songDetailPage" class="page">
+        <button id="backToHomeFromDetailBtn" class="back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+        <div class="song-detail-container">
+            <img id="detailAlbumArt" src="https://placehold.co/200x200/3a3a4e/e0e0e0?text=Art" alt="Album Art" class="detail-album-art">
+            <h2 id="detailTrackTitle">Song Title</h2>
+            <p id="detailTrackArtist">Artist Name</p>
+            <p id="detailAlbumName">Album Name</p>
+            <button id="playFromDetailBtn" class="play-from-detail-btn"><i class="fas fa-play-circle"></i> Play</button>
+        </div>
+    </div>
+
+    <div id="playerPage" class="page">
+        <button id="backToHomeBtn" class="back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+        <div class="music-player-container">
+            <div class="music-player-box">
+                <div class="player-header">
+                    <img id="albumArt" src="https://placehold.co/100x100/3a3a4e/e0e0e0?text=Art" alt="Album Art" class="album-art-player">
+                    <div class="track-info-player">
+                        <h2 id="playerTrackTitle">Song Title</h2>
+                        <p id="playerTrackArtist">Artist Name</p>
+                    </div>
+                </div>
+
+                <div id="lyricsContainer" class="lyrics-container">
+                    <p>Lyrics will appear here...</p>
+                </div>
+
+                <div class="player-controls">
+                    <div class="progress-section-player">
+                        <div id="playerProgressBarContainer" class="progress-bar-container-player">
+                            <div id="playerProgressBar" class="progress-bar-player"></div>
+                        </div>
+                        <div class="time-display-player">
+                            <span id="playerCurrentTime">0:00</span>
+                            <span id="playerTotalDuration">0:00</span>
+                        </div> 
+                    </div>
+
+                    <div class="main-controls-player">
+                        <button id="playerPrevBtn" class="control-btn-player"><i class="fas fa-backward-step"></i></button>
+                        <button id="playerPlayPauseBtn" class="control-btn-player play-pause-player"><i class="fas fa-play"></i></button>
+                        <button id="playerNextBtn" class="control-btn-player"><i class="fas fa-forward-step"></i></button>
+                    </div>
+
+                    <div class="secondary-controls-player">
+                        <button id="playerRepeatBtn" class="control-btn-player small-icon"><i class="fas fa-repeat"></i></button>
+                        <button id="playerShuffleBtn" class="control-btn-player small-icon"><i class="fas fa-shuffle"></i></button>
+                        <div class="volume-control-player">
+                            <i class="fas fa-volume-down volume-icon-player"></i>
+                            <input type="range" id="playerVolumeSlider" class="volume-slider-player" min="0" max="1" step="0.01" value="0.8">
+                            <i class="fas fa-volume-up volume-icon-player ml-1"></i>
+                        </div>
+                        <div class="playback-speed-control">
+                            <i class="fas fa-tachometer-alt speed-icon"></i>
+                            <input type="range" id="playerSpeedSlider" class="speed-slider" min="0.5" max="2.0" step="0.25" value="1.0">
+                            <span id="currentSpeedDisplay">1.0x</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="footer-credit">//code by: @DEVJAMMY</p>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audioPlayer"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
